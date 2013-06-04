@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+<meta name="MobileOptimized" content="320">
+<title>导航菜单-css 当前标示,幻灯,支持拖动</title>
+<link href="css/style.css"  rel="stylesheet" type="text/css">
+<script src='./js/swipe/swipe.js'></script>
+</head>
+<body>
+<!--导航-->
+<nav class="nav">
+    <a href="http://www.cnxile.com" class="cnav now">喜乐</a>
+    <span class="cnav">文化</span>
+    <a href="http://www.cnxile.com/20256257733285232476.html" class="cnav">传播</a>
+</nav>
+<!--end 导航-->
+<!--幻灯-->
+<div class="zblp_box" id="mySwipe">
+    <ul class="hdp_list" id="picshow" style="">
+        <li>
+            <a href="#">
+                <img src="upload/9.jpg" width="320" height="135">
+                <span class="hdp_list_bg"></span>
+                <span class="hdp_list_txt">
+                    我的家
+                </span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <img src="upload/4.jpg" width="320" height="135">
+                <span class="hdp_list_bg"></span>
+                <span class="hdp_list_txt">
+                    我的家1
+                </span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <img src="upload/10.jpg" width="320" height="135">
+                <span class="hdp_list_bg"></span>
+                <span class="hdp_list_txt">
+                    我的家2
+                </span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <img src="upload/11.jpg" width="320" height="135">
+                <span class="hdp_list_bg"></span>
+                <span class="hdp_list_txt">
+                    我的家3
+                </span>
+            </a>
+        </li>
+    </ul>
+    <div class="hdp_np" id="hdpmap"></div>
+</div>
+<script>
+// pure JS
+var elem = document.getElementById('mySwipe');
+var elemmap = document.getElementById('hdpmap');
+function listshow(){
+	for(var i=0;i<document.getElementById('picshow').getElementsByTagName("li").length;i++){
+		var adlistmap = document.createElement("span");
+		i == 0 ? adlistmap.setAttribute("class","now") : adlistmap.setAttribute("class","opan");
+		elemmap.appendChild(adlistmap);
+	}	
+}
+listshow();
+window.mySwipe = Swipe(elem, {
+  // startSlide: 4,
+  auto: 3000,
+  // continuous: true,
+  // disableScroll: true,
+  // stopPropagation: true,
+  callback:function(index, element) {
+	  for(var i = 0;i < elemmap.getElementsByTagName("span").length;i++){
+		  var _temp_l = elemmap.getElementsByTagName("span")[i];
+		  i == index ? _temp_l.setAttribute("class","now") : _temp_l.setAttribute("class","opan");
+	  }
+	},
+  // transitionEnd: function(index, element) {}
+});
+</script>
+</body>
+</html>
