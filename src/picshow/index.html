@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+<meta name="MobileOptimized" content="320">
+<title>20-图组</title>
+<link href="css/style.css"  rel="stylesheet" type="text/css">
+<script src="js/swipe/swipe.js" type="text/javascript"></script>
+<script src="js/xilepic.js" type="text/javascript"></script>
+</head>
+<body>
+<header class="header">
+    	<div class="h_left"></div>
+        <div class="h_cen">图片(<span id="page"></span>)</div>
+    	<div class="h_right"></div>
+</header>
+<section class="ps_pic">
+  <div class="ps_img" id="canvas" >
+    <ul id="picshow">
+    </ul>
+  </div>
+  <div class="ps_title_box" id="title">
+    <div class="ps_title">
+      <div onClick="ps_on_off();">
+        <p id="tit">我是图片1的介绍</p>
+      </div>
+      <p id="info" style="display:none;">我是图片1的介绍</p>
+    </div>
+  </div>
+</section>
+
+<script type="text/javascript">
+	//dom列表
+	/*type
+	1:图片,
+	其中图片列表还是用js 输出
+	其他如果图文中有其他类型投票等的混合需要在上面li 列表中输出占位li,
+	*/
+	var imglist = {
+		"info":[
+			{ 
+				"type":"1",
+				"title":"我是图片我是图片我是图片我是图片我是图片1",
+				"img":"../upload/test.jpg",
+				"link":"http://www.cnxile.com",
+				"intro":"我是图片1的介绍",
+				"data":"",
+			},
+			{ 
+				"type":"1",
+				"title":"我是图片2",
+				"img":"../upload/test-2.jpg",
+				"link":"http://www.cnxile.com",
+				"intro":"我是图片2的介绍",
+				"data":"",
+			},
+			{ 
+				"type":"1",
+				"title":"我是图片3",
+				"img":"../upload/test-3.jpg",
+				"link":"http://www.cnxile.com",
+				"intro":"我是图片3的介绍",
+				"data":"",
+			},
+			{ 
+				"type":"1",
+				"title":"我是图片4",
+				"img":"../upload/test-4.jpg",
+				"link":"http://www.cnxile.com",
+				"intro":"我是图片4的介绍",
+				"data":"",
+			},
+			{ 
+				"type":"1",
+				"title":"我是图片5",
+				"img":"../upload/test-5.jpg",
+				"link":"http://www.cnxile.com",
+				"intro":"我是图片5的介绍",
+				"data":"",
+			}
+		],	
+	}
+	
+
+function Start_pic(){
+	picshow();
+	on_stat_size();
+	haimi_tpl(0);
+	window.mySwipe = new Swipe(document.getElementById('canvas'), {
+	  startSlide: 0,
+	  speed: 500,
+	  auto: false,
+	  continuous: true,
+	  disableScroll: false,
+	  stopPropagation: false,
+	  callback: function(index, elem) {haimi_tpl(index);},
+	  transitionEnd: function(index, elem) {}
+	});
+}
+Start_pic();
+window.onresize = Start_pic;
+
+
+</script>
+</body>
+</html>
